@@ -1,0 +1,23 @@
+{
+    "time": [
+        {
+            "time": "afternoon",
+            "lyric": "The horror of nightfall is ever so near..."
+        },
+        {
+            "time": "night",
+            "lyric": "Are you afraid of the night?"
+        },
+        {
+            "time": "early-morning",
+            "lyric": "At Dawn! They sleep..."
+        }
+    ],
+    "weather": [
+        {
+            "wx-stage": "cold",
+            "lyric": "The horror of nightfall is ever so near..."
+        }
+    ]
+}
+

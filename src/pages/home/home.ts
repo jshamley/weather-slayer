@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { NavController } from 'ionic-angular';
+import { NavController, LoadingController } from 'ionic-angular';
 import { Geolocation } from 'ionic-native';
 
 @Component({
@@ -11,23 +11,36 @@ export class HomePage {
   public zipcode: number;
   public location: any;
   public locationLoaded: boolean = false;
+  public loaded: boolean = false;
+  private loader: any
 
-  constructor(public navCtrl: NavController) {
+  constructor(
+    public navCtrl: NavController,
+    public loadingCtrl: LoadingController
+  ) {
+    this.loader = this.loadingCtrl.create({
+      content: "Please wait..."
+    });
+    this.loader.present();
+
     this.getCurrentLocation();
   }
 
-  searchWeather(e: Event, zipcode: number) {
-    console.log(e, zipcode, this.zipcode);
+  searchWeather() {
+    console.log(this.zipcode);
   }
 
   getCurrentLocation() {
     Geolocation.getCurrentPosition()
       .then((res) => {
-        console.log(res);
         this.locationLoaded = true;
+        this.loaded = true;
         this.location = res.coords;
+        this.loader.dismiss();
       })
       .catch((err) => {
+        this.loaded = true;
+        this.loader.dismiss();
         console.log(err);
       });
   }

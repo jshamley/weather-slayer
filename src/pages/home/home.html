@@ -5,15 +5,17 @@
 </ion-header>
 
 <ion-content padding>
-  <!--Zipcode search box-->
-  <ion-list>
-    <ion-item>
-      <ion-label floating>Zipcode</ion-label>
-      <ion-input type="number" [value]="zipcode"></ion-input>
-    </ion-item>
-  </ion-list>
-  <button ion-button full (click)="searchWeather($event, zipcode)">Search</button>
+  <div *ngIf="loaded" >
+    <!--Zipcode search box-->
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Change Location</ion-label>
+        <ion-input type="number" [value]="zipcode"></ion-input>
+      </ion-item>
+    </ion-list>
+    <button ion-button full (click)="searchWeather($event, zipcode)">Search</button>
+  </div>
 
-  <div *ngIf="locationLoaded" padding>I see you are currently at <span class="text-muted">{{ location.latitude }},{{ location.longitude }}</span></div>
+  <div *ngIf="locationLoaded" padding-top padding-bottom>I see you are currently at <span class="text-muted">{{ location.latitude }},{{ location.longitude }}</span></div>
 
 </ion-content>
