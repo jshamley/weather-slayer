@@ -14,4 +14,6 @@
   </ion-list>
   <button ion-button full (click)="searchWeather($event, zipcode)">Search</button>
 
+  <div *ngIf="locationLoaded" padding>I see you are currently at <span class="text-muted">{{ location.latitude }},{{ location.longitude }}</span></div>
+
 </ion-content>

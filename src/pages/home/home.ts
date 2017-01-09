@@ -9,6 +9,8 @@ import { Geolocation } from 'ionic-native';
 })
 export class HomePage {
   public zipcode: number;
+  public location: any;
+  public locationLoaded: boolean = false;
 
   constructor(public navCtrl: NavController) {
     this.getCurrentLocation();
@@ -20,8 +22,10 @@ export class HomePage {
 
   getCurrentLocation() {
     Geolocation.getCurrentPosition()
-      .then((resp) => {
-        console.log(resp);
+      .then((res) => {
+        console.log(res);
+        this.locationLoaded = true;
+        this.location = res.coords;
       })
       .catch((err) => {
         console.log(err);
