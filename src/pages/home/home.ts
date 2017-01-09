@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { NavController, LoadingController } from 'ionic-angular';
 import { Geolocation } from 'ionic-native';
@@ -7,7 +7,7 @@ import { Geolocation } from 'ionic-native';
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage {
+export class HomePage implements OnInit {
   public postalCode: number;
   public location: any;
   public locationLoaded: boolean = false;
@@ -18,11 +18,10 @@ export class HomePage {
     public navCtrl: NavController,
     public loadingCtrl: LoadingController
   ) {
-    this.loader = this.loadingCtrl.create({
-      content: "Please wait..."
-    });
-    this.loader.present();
+    this.createLoader();
+  }
 
+  ngOnInit() {
     this.getCurrentLocation();
   }
 
@@ -50,6 +49,13 @@ export class HomePage {
       return true;
     }
     return false;
+  }
+
+  createLoader() {
+    this.loader = this.loadingCtrl.create({
+      content: "Please wait..."
+    });
+    this.loader.present();
   }
 
 }
