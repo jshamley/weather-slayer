@@ -6,14 +6,15 @@
 
 <ion-content padding>
   <div *ngIf="loaded" >
-    <!--Zipcode search box-->
+    <h5>Enter a zipcode below to search for the weather anywhere in the world.</h5>
+
     <ion-list>
       <ion-item>
         <ion-label floating>Change Location</ion-label>
-        <ion-input type="number" [value]="zipcode"></ion-input>
+        <ion-input type="number" name="zipcode" id="zipcode" [value]="zipcode" [(ngModel)]="postalCode"></ion-input>
       </ion-item>
     </ion-list>
-    <button ion-button full (click)="searchWeather($event, zipcode)">Search</button>
+    <button ion-button full (click)="searchWeather()" [disabled]="!isValid()">Search</button>
   </div>
 
   <div *ngIf="locationLoaded" padding-top padding-bottom>I see you are currently at <span class="text-muted">{{ location.latitude }},{{ location.longitude }}</span></div>

@@ -8,7 +8,7 @@ import { Geolocation } from 'ionic-native';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  public zipcode: number;
+  public postalCode: number;
   public location: any;
   public locationLoaded: boolean = false;
   public loaded: boolean = false;
@@ -27,7 +27,7 @@ export class HomePage {
   }
 
   searchWeather() {
-    console.log(this.zipcode);
+    console.log(this.postalCode);
   }
 
   getCurrentLocation() {
@@ -43,6 +43,13 @@ export class HomePage {
         this.loader.dismiss();
         console.log(err);
       });
+  }
+
+  isValid() {
+    if (this.postalCode && this.postalCode.toString().length === 5) {
+      return true;
+    }
+    return false;
   }
 
 }
