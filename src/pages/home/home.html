@@ -17,6 +17,12 @@
     <button ion-button full (click)="searchWeather()" [disabled]="!isValid()">Search</button>
   </div>
 
-  <div *ngIf="locationLoaded" padding-top padding-bottom>I see you are currently at <span class="text-muted">{{ location.latitude }},{{ location.longitude }}</span></div>
-
+  <div padding-top padding-bottom *ngIf="currentConditions" class="text-center current-conditions" >
+    <div>
+      <img [src]="currentConditions.icon_url" alt="current conditions icon">
+    </div>
+    <small>{{ currentConditions.icon }}</small>
+    <h3>{{ currentConditions.temp_f }} &deg;F</h3>
+    <small>Feels Like {{ currentConditions.feelslike_f }} &deg;F</small>
+  </div>
 </ion-content>

@@ -2,21 +2,30 @@
     "time": [
         {
             "time": "afternoon",
-            "lyric": "The horror of nightfall is ever so near..."
+            "lyric": "The horror of nightfall is ever so near...",
+            "song": "Tormentor"
         },
         {
             "time": "night",
-            "lyric": "Are you afraid of the night?"
+            "lyric": "Are you afraid of the night?",
+            "song": "Tormentor"
+        },
+        {
+            "time": "night",
+            "lyric": "Night will come and I will follow. For my victims, no tomorrow.",
+            "song": "Criminally Insane"
         },
         {
             "time": "early-morning",
-            "lyric": "At Dawn! They sleep..."
+            "lyric": "At Dawn! They sleep...",
+            "song": "At Dawn They Sleep"
         }
     ],
     "weather": [
         {
             "wx-stage": "cold",
-            "lyric": "The horror of nightfall is ever so near..."
+            "lyric": "",
+            "song": ""
         }
     ]
 }

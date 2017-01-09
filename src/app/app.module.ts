@@ -1,4 +1,5 @@
 import { NgModule, ErrorHandler } from '@angular/core';
+import { HttpModule, JsonpModule } from '@angular/http';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { MapsPage } from '../pages/maps/maps';
@@ -13,7 +14,9 @@ import { TabsPage } from '../pages/tabs/tabs';
     TabsPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpModule,
+    JsonpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
