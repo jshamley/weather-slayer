@@ -5,6 +5,7 @@ import { MyApp } from './app.component';
 import { MapsPage } from '../pages/maps/maps';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+import { Weather } from '../providers/weather';
 
 @NgModule({
   declarations: [
@@ -25,9 +26,9 @@ import { TabsPage } from '../pages/tabs/tabs';
     HomePage,
     TabsPage
   ],
-  providers: [{
-    provide: ErrorHandler,
-    useClass: IonicErrorHandler
-  }]
+  providers: [
+    { provide: ErrorHandler, useClass: IonicErrorHandler},
+    Weather
+  ]
 })
 export class AppModule {}
