@@ -19,10 +19,9 @@
 
   <div padding-top padding-bottom *ngIf="currentConditions" class="text-center current-conditions" >
     <div>
-      <img [src]="currentConditions.icon_url" alt="current conditions icon">
+      <img [src]="'http://openweathermap.org/img/w/' + currentConditions.weather[0].icon + '.png'" alt="current conditions icon">
     </div>
-    <small>{{ currentConditions.icon }}</small>
-    <h3>{{ currentConditions.temp_f }} &deg;F</h3>
-    <small>Feels Like {{ currentConditions.feelslike_f }} &deg;F</small>
+    <small>{{ currentConditions.weather[0].description }}</small>
+    <h3>{{ convertKelvin(currentConditions.main.temp) }} &deg;F</h3>
   </div>
 </ion-content>

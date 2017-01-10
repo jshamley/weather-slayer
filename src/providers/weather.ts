@@ -1,26 +1,32 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Jsonp, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class Weather {
-  private wxapikey: string = 'b6582f1b71cd734c';
+  private wxapikey: string = '7aee6ab54b2751d5ead346b6a4772565';
 
   constructor(
-    public http: Http
+    private http: Http,
+    private jsonp: Jsonp
   ) {
-    console.log('Hello Weather Provider');
+
   }
 
-  getCurrentConditions(postalCode) {
-    return this.http.get('https://api.wunderground.com/api/' + this.wxapikey + '/conditions/q/' + postalCode + '.json')
+  getCurrentConditions(postalCode: number) {
+    return this.http.get(`http://api.openweathermap.org/data/2.5/weather?zip=${postalCode},us&appid=${this.wxapikey}`)
+      .map(res => res)
+      .catch(this.handleError);
+  }
+
+  getForecast(postalCode: number) {
+    return this.http.get(`http://api.openweathermap.org/data/2.5/weather?zip=${postalCode},us&appid=${this.wxapikey}`)
       .map(res => res)
       .catch(this.handleError);
   }
 
   private handleError (error: Response | any) {
-    // In a real world app, we might use a remote logging infrastructure
     let errMsg: string;
     if (error instanceof Response) {
       const body = error.json() || '';

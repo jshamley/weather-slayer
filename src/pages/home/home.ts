@@ -33,9 +33,11 @@ export class HomePage implements OnInit {
 
   searchWeather() {
     this.wx.getCurrentConditions(this.postalCode).subscribe(res => {
+      console.log(res.json());
       const response = res.json();
-      this.currentConditions = response.current_observation;
+      this.currentConditions = response;
     });
+
   }
 
   getCurrentLocation() {
@@ -65,6 +67,11 @@ export class HomePage implements OnInit {
       content: "Please wait..."
     });
     this.loader.present();
+  }
+
+  convertKelvin(k) {
+    const f = 1.8 * (k - 273) + 32;
+    return Math.round(f * 10) / 10;
   }
 
 }
