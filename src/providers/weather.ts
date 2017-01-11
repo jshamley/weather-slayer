@@ -21,7 +21,7 @@ export class Weather {
   }
 
   getForecast(postalCode: number) {
-    return this.http.get(`http://api.openweathermap.org/data/2.5/weather?zip=${postalCode},us&appid=${this.wxapikey}`)
+    return this.http.get(`http://api.openweathermap.org/data/2.5/forecast?zip=${postalCode},us&appid=${this.wxapikey}`)
       .map(res => res)
       .catch(this.handleError);
   }
